@@ -8,7 +8,7 @@ import (
 	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/aws/credentials"
 	"github.com/aws/aws-sdk-go/service/sqs"
-	"github.com/h2ik/go-sqs-poller/v3/worker"
+	"github.com/trung85-go/go-sqs-poller/v3/worker"
 )
 
 func main() {
@@ -18,8 +18,8 @@ func main() {
 	}
 	sqsClient := worker.CreateSqsClient(awsConfig)
 	workerConfig := &worker.Config{
-		QueueName:          "my-sqs-queue",
-		MaxNumberOfMessage: 15,
+		QueueName:          "my-sqs-topic",
+		MaxNumberOfMessage: 10,
 		WaitTimeSecond:     5,
 	}
 	eventWorker := worker.New(sqsClient, workerConfig)
